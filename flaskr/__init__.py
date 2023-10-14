@@ -1,11 +1,16 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
+
+from flask_bootstrap import Bootstrap
+
 
 # creates and configure the app
 def create_app(test_config=None):
-    # creat flask instance
+    # create flask instance
     app = Flask(__name__, instance_relative_config=True) # configuration files are relative to the instance folder
+    Bootstrap(app)
+
     # default configuration
     app.config.from_mapping( 
     SECRET_KEY='dev',
@@ -27,9 +32,9 @@ def create_app(test_config=None):
 
     # a simple page that says hello
     @app.route('/')
-    def home():
-        return 'Hello, World!'
-    
+    def index():
+        return render_template('index.html')
+
     # registers 'init_db' command with the app (use: flask --app flaskr init-db) 
     # CAUTION: this will clear existing data and create new tables
     from . import db
