@@ -40,5 +40,20 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
+    # import and register auth blueprint
+    from . import auth
+    app.register_blueprint(auth.bp)
+
 
     return app
+
+# Create virtual environment
+# py -m venv .venv
+
+# Dependencies 
+# pip install flask
+# pip install flask_bootstrap
+
+# run flask app
+# flask --app flaskr run --debug
+
