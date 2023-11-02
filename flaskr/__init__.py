@@ -44,6 +44,8 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
+    from . import nav
+    nav.init_app(app)
 
     return app
 
@@ -53,6 +55,7 @@ def create_app(test_config=None):
 # Dependencies 
 # pip install flask
 # pip install flask_bootstrap
+# pip install flask_nav
 
 # run flask app
 # flask --app flaskr run --debug
