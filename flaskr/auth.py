@@ -10,11 +10,13 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 # creates the register view (register new user)
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
-    # request user input (email and password) via POST
+    # request user input (first name, last name, email, password, phone number) via POST
     if request.method == 'POST':
+        fname = request.form['fname']
+        lname = request.form['lname']
         email = request.form['email']
         password = request.form['password']
-        
+        phone = request.form['phone']
         # create database connection
         db = get_db()
         error = None
@@ -29,8 +31,8 @@ def register():
         if error is None:
             try:
                 db.execute(
-                    "INSERT INTO user (email, password) VALUES (?, ?)",
-                    (email, generate_password_hash(password)),
+                    "INSERT INTO user (fname, lname, email, password, phone) VALUES (?, ?, ?, ?, ?)",
+                    (fname, lname, email, generate_password_hash(password), phone),
                 )
                 db.commit()
 
@@ -38,7 +40,7 @@ def register():
                 new_user = db.execute(
                     "SELECT * FROM user WHERE email = ?", (email,)
                 ).fetchone()
-                print("New User:", new_user)
+                print("New User:", new_user['fname'], new_user['lname'], new_user['email'], new_user['phone'])
 
             # catch duplicate email error
             except db.IntegrityError:
@@ -76,3 +78,10 @@ def login():
         flash(error)
 
     return render_template('auth/login.html')
+
+
+# log out user
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))

@@ -4,7 +4,6 @@ from flask import Flask, render_template
 
 from flask_bootstrap import Bootstrap
 
-
 # creates and configure the app
 def create_app(test_config=None):
     # create flask instance
@@ -53,9 +52,7 @@ def create_app(test_config=None):
 # py -m venv .venv
 
 # Dependencies 
-# pip install flask
-# pip install flask_bootstrap
-# pip install flask_nav
+# pip install -r requirements.txt
 
 # run flask app
 # flask --app flaskr run --debug

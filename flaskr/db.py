@@ -28,7 +28,6 @@ def close_db(e=None):
 def init_db():
     # returns db connection
     db = get_db()
-    
     # open file relative to flaskr package
     with current_app.open_resource('schema.sql') as f:
         # execute script inside 'schema.sql' (clear and create tables)

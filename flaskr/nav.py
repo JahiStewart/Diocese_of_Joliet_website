@@ -11,6 +11,7 @@ def mynavbar():
         View('Home', 'index'),
         View('Register', 'auth.register'),
         View('Login', 'auth.login'),
+        View('Logout', 'auth.logout'),
     )
 
 def init_app(app):

@@ -1,0 +1,16 @@
+room_data = {
+    0: {'room_number': '508', 'name': 'Hope', 'capacity': 16},
+    1: {'room_number': '425', 'name': 'Charity', 'capacity': 16},
+    2: {'room_number': None, 'name': 'Xavier Chapel', 'capacity': 220},
+    3: {'room_number': '314', 'name': 'Social Concerns', 'capacity': 8},
+    4: {'room_number': '119', 'name': 'Faith', 'capacity': 8},
+    5: {'room_number': '136', 'name': 'Chancery Tribunal', 'capacity': 8},
+    6: {'room_number': '163', 'name': 'Clergy Religious', 'capacity': 8},
+    7: {'room_number': '212', 'name': 'Administration A', 'capacity': 8},
+    8: {'room_number': '219', 'name': 'Administration B', 'capacity': 8},
+    9: {'room_number': '120', 'name': 'Evangelization Catechesis', 'capacity': 12},
+    10: {'room_number': '503', 'name': 'St. John Neumann', 'capacity': 50},
+    11: {'room_number': '504', 'name': 'St. Kateri Tekawitha', 'capacity': 50},
+    12: {'room_number': '505', 'name': 'St. Juan Diego', 'capacity': 50},
+    13: {'room_number': '506 and 507', 'name': None, 'capacity': 25}
+}
