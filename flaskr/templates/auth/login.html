@@ -3,24 +3,27 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<h1 class="mt-4">Login</h1>
-{% if error %}
-  <p class=error><strong>Error:</strong> {{ error }}</p>
-{% endif %}
-  <form method=post>
-<form method="post">
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" type="text" name="email" id="email" value="{{ request.form.email }}">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input class="form-control" type="password" name="password" id="password" value="{{ request.form.password }}">
-  </div>
-  <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="Log In">
-  </div>
-</form>
-<p style="text-align: center;">Need an account? <a href="{{ url_for('auth.register') }}">Click here to register!</a></p>
-{% endblock %}
+    <h1 class="mt-4">Login</h1>
 
+    {% if error %}
+        <p class=error><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="text" name="email" id="email" value="{{ request.form.email }}">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password" value="{{ request.form.password }}">
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Log In">
+        </div>
+    </form>
+
+    <p style="text-align: center;">Need an account? <a href="{{ url_for('auth.register') }}">Click here to register!</a></p>
+{% endblock %}

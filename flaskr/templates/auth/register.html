@@ -4,32 +4,39 @@
 
 {% block content %}
 <h1 class="mt-4">Create Account</h1>
+
 {% if error %}
-  <p class=error><strong>Error:</strong> {{ error }}</p>
+    <p class=error><strong>Error:</strong> {{ error }}</p>
 {% endif %}
+
 <form method="post">
-  <div class="form-group">
-    <label for="fname">First Name</label>
-    <input class="form-control" type="text" name="fname" id="fname" value="{{ request.form.fname }}">
-  </div>
-  <div class="form-group">
-    <label for="lname">Last Name</label>
-    <input class="form-control" type="text" name="lname" id="lname" value="{{ request.form.lname }}">
-  </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" type="text" name="email" id="email" value="{{ request.form.email }}">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input class="form-control" type="password" name="password" id="password" value="{{ request.form.password }}">
-  </div>
-  <div class="form-group">
-    <label for="fname">Phone Number</label>
-    <input class="form-control" type="phone" name="phone" id="phone" value="{{ request.form.phone }}">
-  </div>
-  <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="Create Account">
-  </div>
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input class="form-control" type="text" name="fname" id="fname" value="{{ request.form.fname }}">
+    </div>
+
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input class="form-control" type="text" name="lname" id="lname" value="{{ request.form.lname }}">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email" value="{{ request.form.email }}">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password" value="{{ request.form.password }}">
+    </div>
+
+    <div class="form-group">
+        <label for="fname">Phone Number</label>
+        <input class="form-control" type="phone" name="phone" id="phone" value="{{ request.form.phone }}">
+    </div>
+    
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Create Account">
+    </div>
 </form>
 {% endblock %}
