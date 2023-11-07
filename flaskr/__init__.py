@@ -1,3 +1,5 @@
+from . import db, auth
+
 import os
 
 from flask import Flask, render_template
@@ -36,21 +38,9 @@ def create_app(test_config=None):
 
     # registers 'init_db' command with the app (use: flask --app flaskr init-db) 
     # CAUTION: this will clear existing data and create new tables
-    from . import db
     db.init_app(app)
 
     # import and register auth blueprint
-    from . import auth
     app.register_blueprint(auth.bp)
 
     return app
-
-# Create virtual environment
-# py -m venv .venv
-
-# Dependencies 
-# pip install -r requirements.txt
-
-# run flask app
-# flask --app flaskr run --debug
-
