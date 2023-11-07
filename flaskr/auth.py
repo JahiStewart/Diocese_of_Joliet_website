@@ -10,6 +10,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 # creates the register view (register new user)
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    error = None
     # request user input (first name, last name, email, password, phone number) via POST
     if request.method == 'POST':
         fname = request.form['fname']
@@ -44,13 +45,13 @@ def register():
 
             # catch duplicate email error
             except db.IntegrityError:
-                error = f"User {email} is already registered."
+                error = f"Email {email} is already registered."
             else:
                 return redirect(url_for("auth.login"))
 
         flash(error)
 
-    return render_template('auth/register.html')
+    return render_template('auth/register.html', error=error)
 
 
 # creates the login view (login existing user)

@@ -25,6 +25,7 @@ def close_db(e=None):
     if db is not None:
         db.close()
 
+# initializes the database
 def init_db():
     # returns db connection
     db = get_db()
