@@ -56,6 +56,7 @@ def register():
 # creates the login view (login existing user)
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
+    error = None
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -77,7 +78,19 @@ def login():
 
         flash(error)
 
-    return render_template('auth/login.html')
+    return render_template('auth/login.html', error=error)
+
+# checks if user is logged in (if user_id is stored in the session, 
+#                              if so, then it stores user data in g.user)
+@bp.before_app_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+    if user_id is None:
+        g.user = None
+    else:
+        g.user = get_db().execute(
+            'SELECT * FROM user WHERE id = ?', (user_id,)
+        ).fetchone()
 
 
 # log out user

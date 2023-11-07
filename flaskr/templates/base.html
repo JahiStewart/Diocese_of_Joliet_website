@@ -23,5 +23,9 @@ further customization-->
 
 <!--Add navigation -->
 {% block navbar %}
-{{nav.mynavbar.render()}}
 {% endblock %}
+<section>
+{% for message in get_flashed_messages() %}
+    <div>{{ message }}</div>
+{% endfor %}
+</section>
