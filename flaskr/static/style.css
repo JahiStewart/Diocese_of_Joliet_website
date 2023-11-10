@@ -2,6 +2,7 @@
 html {
     font-family: Arial, Verdana , sans-serif;
 }
+
 h1 {
     text-align: center;
 }
@@ -26,6 +27,4 @@ form {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    
 }
-
