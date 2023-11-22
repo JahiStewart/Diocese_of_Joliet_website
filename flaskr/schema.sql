@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS UserOrganization;
 -- tables
 -- Table: Organization
 CREATE TABLE Organization (
-    Id INTEGER NOT NULL unique,
+    Id TEXT NOT NULL unique,
     Name TEXT NOT NULL,
     Description TEXT NULL,
     CONSTRAINT Organization_pk PRIMARY KEY (Id)
@@ -23,8 +23,8 @@ CREATE TABLE Organization (
 
 -- Table: Reservation
 CREATE TABLE Reservation (
-    Id INTEGER NOT NULL unique,
-    User_Id INTEGER NOT NULL,
+    Id TEXT NOT NULL unique,
+    User_Id TEXT NOT NULL,
     Res_Date TEXT NOT NULL,
     Beg_Time TEXT NOT NULL,
     End_Time TEXT NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE Reservation (
 
 -- Table: Space
 CREATE TABLE Room (
-    Id INTEGER NOT NULL unique,
+    Id TEXT NOT NULL unique,
     Name TEXT NOT NULL,
     Picture_Name TEXT NULL,
     Capacity INTEGER NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE Room (
 
 -- Table: SpaceArrangement
 CREATE TABLE RoomArrangement (
-    Id INTEGER NOT NULL,
+    Id TEXT NOT NULL,
     Description TEXT NOT NULL,
     Picture_Name TEXT NOT NULL,
     CONSTRAINT RoomArrangement_pk PRIMARY KEY (Id)
@@ -73,8 +73,8 @@ CREATE TABLE RoomArrangement (
 
 -- Table: User
 CREATE TABLE User (
-    Id INTEGER UNIQUE NOT NULL,
-    Email TEXT UNIQUE NOT NULL,
+    Id TEXT UNIQUE NOT NULL,
+    Email TEXT NOT NULL,
     Password TEXT NOT NULL,
     First_Name TEXT NOT NULL,
     Last_Name TEXT NOT NULL,
@@ -84,9 +84,9 @@ CREATE TABLE User (
 
 -- Table: UserOrganization
 CREATE TABLE UserOrganization (
-    Id INTEGER NOT NULL unique,
-    Organization_Id INTEGER NOT NULL,
-    User_Id INTEGER NOT NULL,
+    Id TEXT NOT NULL unique,
+    Organization_Id TEXT NOT NULL,
+    User_Id TEXT NOT NULL,
     CONSTRAINT UserOrganization_pk PRIMARY KEY (Id),
     FOREIGN KEY (User_Id) REFERENCES User (Id),
     FOREIGN KEY (User_Id) REFERENCES User (Id)
