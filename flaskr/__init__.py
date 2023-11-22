@@ -43,4 +43,8 @@ def create_app(test_config=None):
     # import and register auth blueprint
     app.register_blueprint(auth.bp)
 
+    @app.route('/myaccount')
+    def myaccount():
+        return render_template('myaccount.html')
+
     return app

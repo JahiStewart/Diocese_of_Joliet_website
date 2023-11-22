@@ -32,7 +32,7 @@ def register():
         if error is None:
             try:
                 db.execute(
-                    "INSERT INTO user (fname, lname, email, password, phone) VALUES (?, ?, ?, ?, ?)",
+                    "INSERT INTO user (First_Name, Last_Name, Email, Password, Phone) VALUES (?, ?, ?, ?, ?)",
                     (fname, lname, email, generate_password_hash(password), phone),
                 )
                 db.commit()
@@ -41,7 +41,7 @@ def register():
                 new_user = db.execute(
                     "SELECT * FROM user WHERE email = ?", (email,)
                 ).fetchone()
-                print("New User:", new_user['fname'], new_user['lname'], new_user['email'], new_user['phone'])
+                print("New User:", new_user['First_Name'], new_user['Last_Name'], new_user['email'], new_user['phone'])
 
             # catch duplicate email error
             except db.IntegrityError:

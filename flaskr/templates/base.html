@@ -27,7 +27,7 @@ further customization-->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
+            <a class="navbar-brand" href="{{ url_for('index') }}">WebSiteName</a>
         </div>
         <ul class="nav navbar-nav">
             <!--Will need to work on this further, find a good way to highlight the current page in nav. -->
@@ -45,6 +45,7 @@ further customization-->
                 </li>
                 {% if g.user %}
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                    <li><a href="{{url_for('myaccount') }}">My Account</a></li>
                 {% else %}
                     <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                     <li><a href="{{ url_for('auth.register') }}">Register</a></li>

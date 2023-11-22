@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="mt-4">My Account</h1>
+    <p>Name: {{ g.user['First_Name'] }} {{ g.user['Last_Name'] }}</p>
+    <p>Email: {{ g.user['Email'] }}</p>
+    <p>Location:</p>
+    <p>Organizations:</p>
+{% endblock %}

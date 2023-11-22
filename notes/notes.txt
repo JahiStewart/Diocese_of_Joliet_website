@@ -14,3 +14,11 @@ room_data = {
     12: {'room_number': '505', 'name': 'St. Juan Diego', 'capacity': 50},
     13: {'room_number': '506 and 507', 'name': None, 'capacity': 25}
 }
+
+DATABASE NOTES
+11/21/2023 
+I migrated Ray's create.sql file into our schema.sql file. In order for it to work I changed 
+a few things. First, sqlite does not use CREATE/DROP DATABASE, so I changed it to drop each individual
+table. Second, sqlite datatypes include: null, integer, real, text, and blob, so I changed all of the 
+varchars() char(), etc to an included datatype. Third, sqlite does not use ALTER TABLE statements, so
+I placed each foreign key assignment inside its respective table. - Chris
