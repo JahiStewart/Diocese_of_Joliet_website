@@ -1,4 +1,4 @@
-from . import db, auth
+from . import db, auth, forms
 
 import os
 
@@ -41,6 +41,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     # import and register auth blueprint
-    app.register_blueprint(auth.bp)
+    app.register_blueprint(auth.auth)
+    app.register_blueprint(forms.forms)
 
     return app

@@ -7,10 +7,10 @@ from uuid import uuid4
 
 from flaskr.db import get_db
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 # creates the register view (register new user)
-@bp.route('/register', methods=('GET', 'POST'))
+@auth.route('/register', methods=('GET', 'POST'))
 def register():
     error = None
     # request user input (first name, last name, email, password, phone number) via POST
@@ -58,7 +58,7 @@ def register():
 
 
 # creates the login view (login existing user)
-@bp.route('/login', methods=('GET', 'POST'))
+@auth.route('/login', methods=('GET', 'POST'))
 def login():
     error = None
     if request.method == 'POST':
@@ -86,7 +86,7 @@ def login():
 
 # checks if user is logged in (if user_id is stored in the session, 
 #                              if so, then it stores user data in g.user)
-@bp.before_app_request
+@auth.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
     if user_id is None:
@@ -98,7 +98,7 @@ def load_logged_in_user():
 
 
 # log out user
-@bp.route('/logout')
+@auth.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
