@@ -104,7 +104,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@bp.route('/myaccount')
+@auth.route('/myaccount')
 def myaccount():
     # create connection to database
     db = get_db()
