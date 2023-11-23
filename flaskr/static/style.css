@@ -1,7 +1,4 @@
-
-html {
-    font-family: Arial, Verdana, sans-serif;
-}
+html {font-family: Arial, Verdana, sans-serif;}
 
 h1 {
     text-align: center;
@@ -18,12 +15,8 @@ h2 {
 .form {
     display: block;
     margin: auto;
-<<<<<<< HEAD
     max-width: 500px;
 }
-
-
-
 
 .float-right {
     display: block;
@@ -36,21 +29,6 @@ h2 {
     display: block;
     float: left;
     width: 30%;
-
-    /* margin-left: 10%; */
-
-
-=======
-
-
-#room-request-form {
-    line-height: 2;
-    width: 70%
-}
-
-.form-inline label {
-    padding-right: 2.5em
->>>>>>> 47cbb534025475fff2cbfd7bbf1321862f1911a9
 }
 
 #room-request-form {
