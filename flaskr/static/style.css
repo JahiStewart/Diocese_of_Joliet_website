@@ -6,12 +6,19 @@ html {
 h1 {
     text-align: center;
     padding: 2%;
+    background-color: ghostwhite;
+    margin-top: 0;
 }
 
-form {
+h2 {
+    text-align: left;
+    padding: 2%;
+}
+
+.form {
     display: block;
     margin: auto;
-    width: 50%;
+    max-width: 500px;
 }
 
 .error {
@@ -28,4 +35,21 @@ form {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+}
+
+.float-right {
+    display: block;
+    width: 70%;
+    float: right;
+    /* margin-right: 10%; */
+}
+
+.float-left {
+    display: block;
+    float: left;
+    width: 30%;
+
+    /* margin-left: 10%; */
+
+
 }

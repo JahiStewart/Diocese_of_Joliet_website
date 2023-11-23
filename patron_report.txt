@@ -1,0 +1,92 @@
+First Name	Last Name	Email	Organization
+Demco	Test		
+Jessica	Krieter	jkrieter@dioceseofjoliet.org	"Diocese of Joliet, Catholic Charities"
+Jessica	Krieter	jlkrieter@gmail.com	Diocese of Joliet
+Jessica	Krieter	dojdemo@gmail.com	Diocese of Joliet
+Mary Ann	McLean	mamclean@dioceseofjoliet.org	Diocese of Joliet
+Tanya	Singh	tsingh@dioceseofjoliet.org	
+Katie	Choudhary	kchoudhary@dioceseofjoliet.org	
+Elena	Cabral	ecabral@cc-doj.org	Catholic Charities
+Kathleen	Schweikart	kschweikart@cc-doj.org	Catholic Charities
+Bruce	Carlson	bcarlson@dioceseofjoliet.org	Diocese of Joliet
+Emily	Spray	espray@dioceseofjoliet.org	
+Nancy	Papesh	npapesh@dioceseofjoliet.org	Diocese of Joliet
+Lynn	Gaeckle	lgaeckle@dioceseofjoliet.org	Diocese of Joliet
+Lorena	Garza	Lgarza@cc-doj.org	Catholic Charities
+Maria	Turone	Mturone@dioceseofjoliet.org	Diocese of Joliet
+Terri	Mirabelli	tmirabelli@dioceseofjoliet.org	Diocese of Joliet
+Nora	Labanauskas	noral@dioceseofjoliet.og	
+Nora	Labanauskas	noral@dioceseofjoliet.org	Diocese of Joliet
+Julie	Grzadzinski	jgrzadzinski@dioceseofjoliet.org	Diocese of Joliet
+Hoyt	Platts	Hplatts@cc-doj.org	
+Renata	Cichowicz	rcichowicz@dioceseofjoliet.org	Diocese of Joliet
+Geralyn	Kuban	gkuban@dioceseofjoliet.org	Diocese of Joliet
+Karen	Wojnarowski	kwojnarowski@dioceseofjoliet.org	Diocese of Joliet
+Deacon	Puscas	vpuscas@dioceseofjoliet.org	Diocese of Joliet
+Brenda	Herrera	bherrera@cc-doj.org	Catholic Charities
+Mercy	Robb	mrobb@dioceseofjoliet.org	Diocese of Joliet
+Danielle	Gritzenbach	dgritzenbach@cc-doj.org	Catholic Charities
+Vanessa	Kloepfer	vkloepfer@cc-doj.org	Catholic Charities
+Crystal	Del Rio	cdelrio@cc-doj.org	Catholic Charities
+Sue	Bartels	sbartels@dioceseofjoliet.org	Diocese of Joliet
+Justin	Reyes	jreyes@dioceseofjoliet.org	Diocese of Joliet
+Jennifer	Wick	jwick@cc-doj.org	Catholic Charities
+Connie	Masson	CMasson@cc-doj.org	
+Shirley	Roberson	shirleyaroberson@sbcglobal.net	
+Shirley	Roberson	sroberson@dioceseofjoliet.org	Diocese of Joliet
+Leah	Heffernan	lheffernan@dioceseofjoliet.org	Diocese of Joliet
+Alicia	Botero	abotero@cc-doj.org	Catholic Charities
+Thomas	Fisher	tfisher@dioceseofjoliet.org	Diocese of Joliet
+Mari	Ruiz	mruiz@cc-doj.org	Catholic Charities
+Alicia	Valtierra	avaltierra@cc-doj.org	Catholic Charities
+Debbie	Camp	dcamp@dioceseofjoliet.org	Diocese of Joliet
+Jacob	Bernhard	jbernhard@dioceseofjoliet.org	
+Janet	Hansen	jhansen@dioceseofjoliet.org	Diocese of Joliet
+Kelly	Rice	krice@cc-doj.org	
+Angelica	Moore	amoore@dioceseofjoliet.org	Diocese of Joliet
+Mary	Massingale	mmassingale@dioceseofjoliet.org	"Diocese of Joliet, Council of Catholic Women"
+Jennifer	Georgis	jgeorgis@dioceseofjoliet.org	Diocese of Joliet
+Barbara	Branch	bbranch@cc-doj.org	
+Kathy	Williamson	ccwpres@dioceseofjoliet.org	Council of Catholic Women
+Kathy	Williamson	jdccwpresident@dioceseofjoliet.org	Council of Catholic Women
+Anthony	Clishem	aclishem@dioceseofjoliet.org	Diocese of Joliet
+Lety	Dimas	ldimas@dioceseofjoliet.org	
+Beka	Deja	bdeja@cc-doj.org	Catholic Charities
+Angela	Dulinski	adulinski@dioceseofjoliet.org	Diocese of Joliet
+Arian	Long	along@cc-doj.com	Catholic Charities
+Arian	Long	along@cc-doj.org	
+Tracy	Lech	tlech@cc-doj.org	Catholic Charities
+Christopher	Nye	cnye@dioceseofjoliet.org	Diocese of Joliet
+Maureen	Harton	mharton@dioceseofjoliet.org	Diocese of Joliet
+Elena	Cabral	ecabral@dioceseofjoliet.org	Diocese of Joliet
+Brian	Schroeder	bschroeder@dioceseofjoliet.org	Diocese of Joliet
+Cathy	Stephens	cstephens@cc-doj.org	Diocese of Joliet
+Jim	Elias	jelias@jolietdiosece.org	
+Jim	Elias	jelias@dioceseofjoliet.org	Diocese of Joliet
+Patricia	Huizar	Phuizar@dioceseofjoliet.org	Diocese of Joliet
+Sharon	McLemen	smclemen@cc-doj.org	Catholic Charities
+Julie	Gudeman	jgudeman@cc-doj.org	
+Joan	Clark	Jclark@dioceseofjoliet.org	Diocese of Joliet
+Joe	Knoll	jknoll@cc-doj.org	Catholic Charities
+Martha	Torres	mtorres@dioceseofjoliet.org	Diocese of Joliet
+Beatriz	Ortega	bortega@cc-doj.org	Catholic Charities
+Prem	Jain	pjain@doj-cc.org	Catholic Charities
+Bry	Williams	bwilliams@cc-doj.org	
+Cynthia	Hamilton	chamilton@cc-doj.org	Catholic Charities
+Sonya	Rogers Smith	srogerssmith@cc-doj.org	Catholic Charities
+Rachel	Neubauer	rneubauer@dioceseofjoliet.org	Diocese of Joliet
+Alex	Buldak	abuldak@dioceseofjoliet.org	Diocese of Joliet
+Nancy	Herrera	nherrera@dioceseofjoliet.org	Diocese of Joliet
+Corinna	House	chouse@cc-doj.org	Catholic Charities
+Catholic Charities	Receptionist BCC	BCCRECEPT16555@cc-doj.org	Catholic Charities
+Susan	DiDomizio	sdidomizio@dioceseofjoliet.org	
+Michelle	Dellinger	mdellinger@dioceseofjoliet.org	Diocese of Joliet
+Lisa	Sumrow	lsumrow@cc-doj.org	Catholic Charities
+Jessica	Krieter	jlkrieter@gmail.com	Diocese of Joliet
+Mark	Gregory	mgregory@dioceseofjoliet.org	
+Pamela	Geary	pageary@dioceseofjoliet.org	
+Mary-Ellen	McCoy	mmccoy@cc-doj.org	
+Test	Account	KlumpRa@lewisu.edu	
+Christopher	English	cenglish@cc-doj.org	Catholic Charities
+Jahi	Stewart	jahikstewart@lewis.edu	
+Jahi	Stewart	jahikstewart@lewisu.edu	

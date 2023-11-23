@@ -2,6 +2,8 @@ import functools
 
 from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
+from uuid import uuid4
+
 
 from flaskr.db import get_db
 
@@ -30,10 +32,11 @@ def register():
 
         # if no errors, insert new user into database
         if error is None:
+            user_id = str(uuid4())
             try:
                 db.execute(
-                    "INSERT INTO user (First_Name, Last_Name, Email, Password, Phone) VALUES (?, ?, ?, ?, ?)",
-                    (fname, lname, email, generate_password_hash(password), phone),
+                    "INSERT INTO user (Id, Email, Password, First_Name, Last_Name, Phone) VALUES (?, ?, ?, ?, ?, ?)",
+                    (user_id,email,generate_password_hash(password),fname,lname,phone),
                 )
                 db.commit()
 
@@ -99,3 +102,23 @@ def load_logged_in_user():
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
+
+@bp.route('/myaccount')
+def myaccount():
+    # create connection to database
+    db = get_db()
+    # get current users id
+    user_id = session.get('user_id')
+    # get users organization if any
+    org = db.execute(
+        'SELECT * FROM organization WHERE id = ?',
+        (user_id,)
+    ).fetchone()
+    # catch error in case user has no organization
+    try:
+        org_name = org['name']
+    except:
+        org_name = "You currenlty don't belong to any organizations."
+
+    return render_template('auth/myaccount.html', org_name=org_name)
