@@ -5,11 +5,11 @@
 {% block content %}
     <h1 class="mt-4">Login</h1>
 
-    {% if error %}
-        <p class=error><strong>Error:</strong> {{ error }}</p>
-    {% endif %}
-
     <form method="post">
+        {% if error %}
+            <div class="alert alert-danger" role="alert"><strong>Error:</strong> {{ error }}</div>
+        {% endif %}
+
         <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" type="text" name="email" id="email" value="{{ request.form.email }}">
