@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
     <h1 class="mt-4">Login</h1>
 
-    <form method="post">
+    <form class="form" method="post">
         {% if error %}
             <div class="alert alert-danger" role="alert"><strong>Error:</strong> {{ error }}</div>
         {% endif %}

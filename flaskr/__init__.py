@@ -31,11 +31,6 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/')
-    def index():
-        return render_template('index.html')
-
     # registers 'init_db' command with the app (use: flask --app flaskr init-db) 
     # CAUTION: this will clear existing data and create new tables
     db.init_app(app)

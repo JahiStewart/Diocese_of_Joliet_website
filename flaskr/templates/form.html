@@ -1,11 +1,25 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+{% block title %}Request a Room{% endblock %}
+
+
 {% block content %}
 
     <h1 class="mt-4">Room Request Form</h1>
 
     <form id="room-request-form" class="form" method="POST">
+
+
+        <div class="form-inline">
+            <div class="form-group">{{ wtf.form_field(form.date) }}</div>
+            <div class="form-group">{{ wtf.form_field(form.start_time) }}</div>
+            <div class="form-group">{{ wtf.form_field(form.end_time) }}</div>
+        </div>  
+        
+        <!-- if room requires arrangment choice -->
+            <!-- put arrangement choices here -->
+        
         <div class="form-group">{{ wtf.form_field(form.purpose) }}</div>
         <div class="form-group">{{ wtf.form_field(form.attendees) }}</div>
 

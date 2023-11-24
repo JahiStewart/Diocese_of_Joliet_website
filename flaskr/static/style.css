@@ -8,14 +8,14 @@ h1 {
 }
 
 h2 {
-    text-align: left;
+    text-align: center;
     padding: 2%;
 }
 
 .form {
     display: block;
     margin: auto;
-    max-width: 500px;
+    width: 50%;
 }
 
 .float-right {
@@ -38,4 +38,9 @@ h2 {
 
 .form-inline label {
     padding-right: 2.5em
+}
+
+.table{
+    width: 60%;
+    margin: auto;
 }

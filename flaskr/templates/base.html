@@ -27,14 +27,14 @@ further customization-->
     <nav class="navbar navbar-inverse" style="margin-bottom: 0;">
         <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url_for('index') }}">WebSiteName</a>
+            <a class="navbar-brand" href="{{ url_for('form.index') }}">Roomie</a>
         </div>
         <ul class="nav navbar-nav">
             <!--Will need to work on this further, find a good way to highlight the current page in nav. -->
-            {% block active_page %}<li class="active"><a href="{{ url_for('index') }}">Home</a></li>{% endblock %}
+            <!-- {% block active_page %}<li class="active"><a href="{{ url_for('form.index') }}">Home</a></li>{% endblock %} -->
 
             <!--dropdown is just here for demo purposes-->
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dropdown
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -42,7 +42,7 @@ further customization-->
                         <li><a href="#">Page 1-2</a></li>
                         <li><a href="#">Page 1-3</a></li>
                     </ul>
-                </li>
+                </li> -->
                 {% if g.user %}
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                     <li><a href="{{url_for('auth.myaccount') }}">My Account</a></li>

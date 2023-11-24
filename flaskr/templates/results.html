@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Results{% endblock %}
+
+
+{% block content %}
+
+{% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }}</p>
+{% endif %}
+
+{% if results %}
+    <h1>Results</h1>
+    <table class="table table-striped table-responsive">
+        <tr>
+            <th>Room</th>
+            <th>Picture</th>
+            <th>Capacity</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result.name }}</td>
+            <td><img src="static/assets/room-thumbnails/{{result.picture_name}}" alt="picture of {{ result.name }}" height="100" width="100"></td>
+            <td>{{ result.capacity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}
