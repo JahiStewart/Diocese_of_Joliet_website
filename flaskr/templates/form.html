@@ -7,6 +7,11 @@
 {% block content %}
 
     <h1 class="mt-4">Room Request Form</h1>
+    <table class="table table-striped table-responsive">
+        <td>{{ room.name }}</td>
+        <td><img src="/static/assets/room-thumbnails/{{room.picture_name}}" alt="picture of {{ room.name }}" height="100" width="100"></td>
+        <td>{{ room.capacity }}</td>
+    </table>
 
     <form id="room-request-form" class="form" method="POST">
 
@@ -21,6 +26,15 @@
             <!-- put arrangement choices here -->
         
         <div class="form-group">{{ wtf.form_field(form.purpose) }}</div>
+        <div class="form-group">
+            <select>
+                {% if organization %}
+                    {% for org in organization %}
+                        <option value="{{ org }}">{{ org }}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div>
         <div class="form-group">{{ wtf.form_field(form.attendees) }}</div>
 
         <b>Beverage Service: Please select any desired beverages.</b>

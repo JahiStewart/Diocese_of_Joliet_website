@@ -85,7 +85,7 @@ def login():
     return render_template('auth/login.html', error=error)
 
 # checks if user is logged in (if user_id is stored in the session, 
-#                              if so, then it stores user data in g.user)
+#                              then it stores user data in g.user)
 @auth.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
@@ -102,6 +102,17 @@ def load_logged_in_user():
 def logout():
     session.clear()
     return redirect(url_for('form.index'))
+
+
+# function that requires user to be logged
+# use this to decorate views that require the user to be logged in
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            return redirect(url_for("auth.login"))
+        return view(**kwargs)
+    return wrapped_view
 
 
 @auth.route('/myaccount')
