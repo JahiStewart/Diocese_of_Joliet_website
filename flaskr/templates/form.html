@@ -22,17 +22,25 @@
             <div class="form-group">{{ wtf.form_field(form.end_time) }}</div>
         </div>  
         
-        <!-- if room requires arrangment choice -->
-            <!-- put arrangement choices here -->
+        <!-- if room requires arrangement choice -->
+        {% if room_arrangements %}
+            <div class="form-group">
+            {% for arrangement in room_arrangements %}
+                <input type="radio" name="arrangement" value="{{ arrangement.Id }}">
+                <img src="/static/assets/room-thumbnails/arrangements/{{arrangement.Picture_Name}}" alt="{{arrangement.Description}}" height="250" width="200">
+            {% endfor %}
+            </div>
+        {% endif %}
         
         <div class="form-group">{{ wtf.form_field(form.purpose) }}</div>
+
         <div class="form-group">
-            <select>
-                {% if organization %}
-                    {% for org in organization %}
-                        <option value="{{ org }}">{{ org }}</option>
-                    {% endfor %}
-                {% endif %}
+            <label for="organization">Organization</label>
+            <select name="organization">
+                <option value="0">-- Select Organization</option>
+                {% for org in organizations %}
+                    <option name="org_id" value="{{ org.id }}">{{ org.name }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="form-group">{{ wtf.form_field(form.attendees) }}</div>
