@@ -42,7 +42,7 @@
         <select name="organization">
             <option value="0">-- Select Organization</option>
             {% for org in organizations %}
-                <option name="org_id" value="{{ org.id }}">{{ org.name }}</option>
+                <option id="org_id" value="{{ org.id }}">{{ org.name }}</option>
             {% endfor %}
         </select>
     </div>
