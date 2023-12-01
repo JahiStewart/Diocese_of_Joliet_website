@@ -1,4 +1,7 @@
-html {font-family: Verdana, sans-serif;}
+html {
+    font-family: Verdana, sans-serif;
+    margin-bottom: 10em;
+}
 
 h1 {
     text-align: center;
@@ -31,16 +34,46 @@ h2 {
     width: 30%;
 }
 
+.table {
+    width: 70%;
+    margin: auto;
+}
+
+
+/* make the arrangement photos clickable as buttons */
+#arrangements img {
+    border-radius: 15px;
+}
+#arrangements input[type=radio] {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin-left: 40px;
+}
+.img-container {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    outline: 1px solid #6c757d;
+    border-radius: 15px;
+    margin-right: 40px;
+}
+#arrangements input[type=radio]:checked+img { /* targets the image corresponding to the checked button */
+    outline: 2px solid #0d6efd;
+}
+
+
+/* adding specific whitespace in the forms page */
 #room-request-form {
     line-height: 2;
     width: 70%
 }
-
-.form-inline label {
-    padding-right: 2.5em
+.checkbox, .form-inline {
+    margin: 0;
 }
-
-.table{
-    width: 60%;
-    margin: auto;
+.form-inline {
+    padding-bottom: 15px;
+}
+.form-inline label {
+    padding-right: 2.5em;
 }
