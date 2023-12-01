@@ -45,14 +45,16 @@ class RoomRequestForm(FlaskForm):
 @login_required
 def book(room_id):
     
+    # get date, start time, and end time from session
     date = session.get('date')
     print(date, type(date))
     start_time = session.get('start_time')
     end_time = session.get('end_time')
+
+    # create form with date, start time, and end time pre-populated
     form = RoomRequestForm(start_time=start_time, end_time=end_time)
 
     db = get_db()
-
 
     # get chosen room from database
     room = db.execute('SELECT * FROM room WHERE Id = ?', (room_id,)).fetchone()
@@ -91,17 +93,20 @@ def book(room_id):
     return render_template('form.html', form=form, room=room, organizations=organizations, room_arrangements=room_arrangements)
 
 
-
 @forms.route('/', methods=['GET', 'POST'])
 def index():
 
     form = RoomRequestForm()
 
     if request.method =='POST':
+        # get results from database
         results = get_results(form.date.data, form.start_time.data, form.end_time.data)
+
+        # store date, start time, and end time in session
         session['date'] = form.date.data
         session['start_time'] = form.start_time.data
         session['end_time'] = form.end_time.data
+
         return render_template('results.html', results=results)
          
       
@@ -112,6 +117,7 @@ def index():
 def get_results(date, start_time, end_time):
     db = get_db()
 
+    # get all rooms that are not reserved during the specified time
     available_rooms = db.execute('''SELECT * FROM room WHERE Id NOT IN 
                                 (SELECT Room_Id FROM reservation WHERE Res_Date = ? AND Beg_Time <= ? AND End_Time >= ?)''', (date, end_time, start_time)).fetchall()
     
