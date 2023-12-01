@@ -3,78 +3,81 @@
 
 {% block title %}Request a Room{% endblock %}
 
-
 {% block content %}
 
-    <h1 class="mt-4">Room Request Form</h1>
-    <table class="table table-striped table-responsive">
-        <td>{{ room.name }}</td>
-        <td><img src="/static/assets/room-thumbnails/{{room.picture_name}}" alt="picture of {{ room.name }}" height="100" width="100"></td>
-        <td>{{ room.capacity }}</td>
-    </table>
+<h1 class="mt-4">Room Request Form</h1>
+<table class="table table-striped table-responsive"> 
+    <td>{{ room.name }}</td>
+    <td>Maximum occupancy: {{ room.capacity }}</td>
+    <td><img src="/static/assets/room-thumbnails/{{room.picture_name}}" alt="picture of {{ room.name }}" height="100" width="100"></td>
+</table>
 
-    <form id="room-request-form" class="form" method="POST">
+<form id="room-request-form" class="form" method="POST">
+    <div class="form-inline">
+        <div class="form-group">{{ wtf.form_field(form.date) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.start_time) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.end_time) }}</div>
+    </div>
 
-
-        <div class="form-inline">
-            <div class="form-group">{{ wtf.form_field(form.date) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.start_time) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.end_time) }}</div>
-        </div>  
-        
-        <!-- if room requires arrangement choice -->
+    <div id="arrangements">
+    <!-- if room requires arrangement choice -->
         {% if room_arrangements %}
+            <br>
+            <b>Select seating arrangement</b>
             <div class="form-group">
             {% for arrangement in room_arrangements %}
-                <input type="radio" name="arrangement" value="{{ arrangement.Id }}">
-                <img src="/static/assets/room-thumbnails/arrangements/{{arrangement.Picture_Name}}" alt="{{arrangement.Description}}" height="250" width="200">
+                <label class="img-container">
+                    <input type="radio" name="arrangement" value="{{ arrangement.Id }}">
+                    <img src="/static/assets/room-thumbnails/arrangements/{{arrangement.Picture_Name}}" alt="{{arrangement.Description}}" height="250" width="200">
+                </label>
             {% endfor %}
             </div>
         {% endif %}
-        
-        <div class="form-group">{{ wtf.form_field(form.purpose) }}</div>
+    </div>
 
-        <div class="form-group">
-            <label for="organization">Organization</label>
-            <select name="organization">
-                <option value="0">-- Select Organization</option>
-                {% for org in organizations %}
-                    <option name="org_id" value="{{ org.id }}">{{ org.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-group">{{ wtf.form_field(form.attendees) }}</div>
+    <div class="form-group">{{ wtf.form_field(form.purpose) }}</div>
 
-        <b>Beverage Service: Please select any desired beverages.</b>
-        <div class="form-inline">
-            <div class="form-group">{{ wtf.form_field(form.coffee) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.soda) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.water) }}</div>
-        </div>
+    <div class="form-group">
+        <label for="organization">Organization</label>
+        <select name="organization">
+            <option value="0">-- Select Organization</option>
+            {% for org in organizations %}
+                <option name="org_id" value="{{ org.id }}">{{ org.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">{{ wtf.form_field(form.attendees) }}</div>
 
-        <b>Catering: Please select if catering is required, and submit a catering Order Form.</b>
-        <div class="form-group">{{ wtf.form_field(form.catering) }}</div>
+    <b>Beverage Service: Please select any desired beverages.</b>
+    <div class="form-inline">
+        <div class="form-group">{{ wtf.form_field(form.coffee) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.soda) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.water) }}</div>
+    </div>
 
-        <b>Audio/Visual: Please select any A/V needs. Note: all other technology can be requested through the IT Helpdesk.</b>
-        <div class="form-inline">
-            <div class="form-group">{{ wtf.form_field(form.lapel_mic) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.podium_mic) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.handheld_mic) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.conference_phone) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.whiteboard) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.easel) }}</div>
-            <div class="form-group">{{ wtf.form_field(form.flipchart) }}</div>
-        </div>
+    <b>Catering: Please select if catering is required, and submit a catering Order Form.</b>
+    <div class="form-group">{{ wtf.form_field(form.catering) }}</div>
 
-        <div class="form-group">{{ wtf.form_field(form.notes) }}</div>
+    <b>Audio/Visual: Please select any A/V needs. Note: all other technology can be requested through the IT Helpdesk.</b>
+    <div class="form-inline">
+        <div class="form-group">{{ wtf.form_field(form.lapel_mic) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.podium_mic) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.handheld_mic) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.conference_phone) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.whiteboard) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.easel) }}</div>
+        <div class="form-group">{{ wtf.form_field(form.flipchart) }}</div>
+    </div>
 
-        <b>Please check here if this meeting should be not be displayed in the lobby</b>
-        <div class="form-group">{{ wtf.form_field(form.no_lobby) }}</div>
+    <div class="form-group">{{ wtf.form_field(form.notes) }}</div>
 
-        <div class="form-inline text-right">
-            {{ wtf.form_field(form.cancel, class="btn btn-secondary") }}
-            {{ wtf.form_field(form.submit, class="btn btn-primary") }}
-        </div>
-    </form>
+    <b>Please check here if this meeting should be <em>not</em> be displayed in the lobby</b>
+    <div class="form-group">{{ wtf.form_field(form.no_lobby) }}</div>
+
+    <div class="form-inline text-right">
+        {{ wtf.form_field(form.cancel, class="btn btn-secondary") }}
+        {{ wtf.form_field(form.submit, class="btn btn-primary") }}
+    </div>
+</form>
 
 {% endblock %}

@@ -6,11 +6,10 @@ from flaskr.db import get_db
 from uuid import uuid4
 from flaskr.auth import login_required
 from datetime import datetime
+
 forms = Blueprint('form', __name__)
 
 class RoomRequestForm(FlaskForm):
-
-
     date = DateField('', validators=[InputRequired()])
     start_time = SelectField('', choices=['06:00 AM', '06:30 AM', '07:00 AM', '07:30 AM', '08:00 AM', '08:30 AM', '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM', '08:00 PM'])
     end_time = SelectField('', choices=['06:00 AM', '06:30 AM', '07:00 AM', '07:30 AM', '08:00 AM', '08:30 AM', '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM', '04:30 PM', '05:00 PM', '05:30 PM', '06:00 PM', '06:30 PM', '07:00 PM', '07:30 PM', '08:00 PM'])
@@ -41,10 +40,10 @@ class RoomRequestForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
+
 @forms.route('/<string:room_id>/book', methods=['GET', 'POST'])
 @login_required
 def book(room_id):
-    
     # get date, start time, and end time from session
     date = session.get('date')
     print(date, type(date))
@@ -64,7 +63,6 @@ def book(room_id):
     room_arrangements = []
     if room['Id'] in rooms_with_arrangements:
         room_arrangements = db.execute('SELECT * FROM RoomArrangement').fetchall()
-        
 
     # get organizations that the user is a part of
     organizations = db.execute('SELECT Name, Id from Organization WHERE Id IN (SELECT Organization_Id from UserOrganization WHERE User_Id = ?)', (session.get('user_id'),)).fetchall()
@@ -72,7 +70,7 @@ def book(room_id):
     if request.method == 'POST':
         if form.cancel.data:  # if cancel button is clicked, the form.cancel.data will be True
             return redirect(url_for('form.index')) # go back to previous page (change to room select once that page exists)
-        
+
         org_id = request.form['org_id']
         print(org_id)
         room_arrangement_id = request.form['arrangement']
@@ -89,13 +87,11 @@ def book(room_id):
              form.coffee.data, form.soda.data, form.water.data, form.catering.data, form.lapel_mic.data, form.podium_mic.data, 
             form.handheld_mic.data, form.conference_phone.data, form.whiteboard.data, form.easel.data, form.notes.data, form.no_lobby.data, room_id, room_arrangement_id),)
 
-
     return render_template('form.html', form=form, room=room, organizations=organizations, room_arrangements=room_arrangements)
 
 
 @forms.route('/', methods=['GET', 'POST'])
 def index():
-
     form = RoomRequestForm()
 
     if request.method =='POST':
@@ -108,8 +104,7 @@ def index():
         session['end_time'] = form.end_time.data
 
         return render_template('results.html', results=results)
-         
-      
+
     return render_template('index.html', form=form)
 
 
@@ -120,9 +115,4 @@ def get_results(date, start_time, end_time):
     # get all rooms that are not reserved during the specified time
     available_rooms = db.execute('''SELECT * FROM room WHERE Id NOT IN 
                                 (SELECT Room_Id FROM reservation WHERE Res_Date = ? AND Beg_Time <= ? AND End_Time >= ?)''', (date, end_time, start_time)).fetchall()
-    
     return available_rooms
-    
-
-    
-
