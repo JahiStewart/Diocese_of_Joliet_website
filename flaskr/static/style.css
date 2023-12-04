@@ -3,6 +3,12 @@ html {
     margin-bottom: 10em;
 }
 
+.wrapper {
+    display: block;
+    margin: auto;
+    width: 70%;
+}
+
 h1 {
     text-align: center;
     padding: 2%;
@@ -23,15 +29,14 @@ h2 {
 
 .float-right {
     display: block;
-    width: 70%;
+    width: 50%;
     float: right;
-    /* margin-right: 10%; */
 }
 
 .float-left {
     display: block;
     float: left;
-    width: 30%;
+    width: 50%;
 }
 
 .table {
@@ -76,4 +81,16 @@ h2 {
 }
 .form-inline label {
     padding-right: 2.5em;
+}
+
+.account-info-section{
+    width: 35%;   
+}
+
+.account-reservation-section{
+    text-align: center;
+}
+
+.dropdown-menu {
+    width: 100%;
 }

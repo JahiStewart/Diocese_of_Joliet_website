@@ -4,7 +4,6 @@ from flask import (Blueprint, flash, g, redirect, render_template, request, sess
 from werkzeug.security import check_password_hash, generate_password_hash
 from uuid import uuid4
 
-
 from flaskr.db import get_db
 
 auth = Blueprint('auth', __name__, url_prefix='/auth')
