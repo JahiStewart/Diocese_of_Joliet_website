@@ -1,4 +1,4 @@
-from . import db, auth, forms
+from . import db, auth, forms, reservations
 
 import os
 
@@ -38,5 +38,6 @@ def create_app(test_config=None):
     # import and register auth blueprint
     app.register_blueprint(auth.auth)
     app.register_blueprint(forms.forms)
+    app.register_blueprint(reservations.reservations)
 
     return app

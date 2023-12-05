@@ -49,9 +49,10 @@ def book(room_id):
     date = datetime.strptime(date[5:16], '%d %b %Y')
     start_time = session.get('start_time')
     end_time = session.get('end_time')
+    attendees = session.get('attendees')
 
     # create form with date, start time, and end time pre-populated
-    form = RoomRequestForm(date=date, start_time=start_time, end_time=end_time)
+    form = RoomRequestForm(date=date, start_time=start_time, end_time=end_time, attendees=attendees)
 
     db = get_db()
 
@@ -94,8 +95,10 @@ def book(room_id):
     return render_template('book.html', form=form, room=room, organizations=organizations, room_arrangements=room_arrangements)
 
 
+# HOME PAGE - ROOM SEARCH FORM  
 @forms.route('/', methods=['GET', 'POST'])
 def index():
+
     form = RoomRequestForm()
 
     if request.method =='POST':

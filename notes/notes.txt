@@ -6,3 +6,49 @@ a few things. First, sqlite does not use CREATE/DROP DATABASE, so I changed it t
 table. Second, sqlite datatypes include: null, integer, real, text, and blob, so I changed all of the 
 varchars() char(), etc to an included datatype. Third, sqlite does not use ALTER TABLE statements, so
 I placed each foreign key assignment inside its respective table. - Chris
+
+
+
+Notes
+--------------------------------------------------------------------
+
+- Everyone with an approved account:
+
+	* can see room availiability 
+	* can create (request) a reservation
+
+
+- Data is:
+	* Tied to a database
+		Database will hold:
+			
+			* users (required)
+			* rooms (required)
+			* history (user reservation history)
+		
+
+- Room request includes:
+	* time
+	* reason
+	* organization
+	* number of attendees
+	* services (ie food/drink)
+	* audio/visual equipment
+
+- Required features:
+	* ability to reserve rooms
+	* Room aproval process (by admin accounts) make one initial admin acc w ability to create more
+	* account approval process (by admin accounts)
+	* hold requests on rooms that already have been requested (no duplicate room requests)
+	* allow all users to see who made each reservation 
+
+- General Requirements:
+	* 3rd party users need access to application (must be available on the web)
+	* support to maintain the application
+	* user account creation (email, password)
+	
+
+
+- General Notes
+	* on site access to server (if needed)	
+	* use guest account on legacy software to gain insight
