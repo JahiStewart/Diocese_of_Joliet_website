@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Reservations{% endblock %}
+
+
+{% block content %}
+
+<h1 class="mt-4">Unapproved Reservations</h1>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Room</th>
+            <th scope="col">Requester</th>
+            <th scope="col">Date</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Actions</th> <!-- Added column for actions -->
+        </tr>
+    </thead>
+    <tbody>
+        {% if reservations_info %} <!-- If there are no reservations -->
+            {% for reservation in reservations_info %}
+                <tr>
+                    <td><img src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}" height="100" width="100">{{ reservation.room_name }}</td>
+                    <td>{{ reservation.user_name }}</td>
+                    <td>{{ reservation.res_date }}</td>
+                    <td>{{ reservation.beg_time }}</td>
+                    <td>{{ reservation.end_time }}</td>
+                    <td>{{ reservation.purpose }}</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="reservation_id" value="{{ reservation.id }}"> <!-- Hidden field for reservation_id -->
+                            <input type="submit" name="deny" value="Deny" class="btn btn-danger"> <!-- Deny button -->
+                            <input type="submit" name="approve" value="Approve" class="btn btn-success"><!-- Approve button -->
+                        </form>
+                    </td>  
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="7">No reservations to approve</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

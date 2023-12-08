@@ -46,6 +46,10 @@ further customization-->
                 {% if g.user %}
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                     <li><a href="{{url_for('auth.myaccount') }}">My Account</a></li>
+                    <li><a href="{{ url_for('reservations.get_unapproved_reservations') }}">Unapproved Reservations</a></li>
+                    <li><a href="{{ url_for('reservations.get_approved_reservations') }}">Approved Reservations</a></li>
+
+
                 {% else %}
                     <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                     <li><a href="{{ url_for('auth.register') }}">Register</a></li>

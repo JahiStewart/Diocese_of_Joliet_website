@@ -20,7 +20,11 @@
 
         {% for result in results %}
             <tr>
-                <td>{{ result.name }}</td>
+            {% if result.name != "None" %}
+            <td>Room {{ result.id }}: {{ result.name }}</td>
+            {% else %}
+            <td>Room {{ result.id }}</td>
+            {% endif %}
                 <td><img src="/static/assets/room-thumbnails/{{result.picture_name}}" alt="picture of {{ result.name }}" height="100" width="100"></td>
                 <td>{{ result.capacity }}</td>
                 <td><a href="{{ url_for('form.book', room_id=result.id) }}">Book</a></td>

@@ -103,7 +103,7 @@ def index():
 
     if request.method =='POST':
         # get results from database
-        results = get_results(form.attendees.data, form.start_time.data, form.end_time.data)
+        results = get_results(form.attendees.data, form.date.data, form.start_time.data, form.end_time.data)
 
         # store date, start time, and end time in session
         session['date'] = form.date.data
@@ -117,12 +117,12 @@ def index():
 
 
 
-def get_results(attendees, start_time, end_time):
+def get_results(attendees,date, start_time, end_time):
     db = get_db()
 
     # get all rooms that are not reserved during the specified time
     available_rooms = db.execute('''SELECT * from room WHERE capacity >= ? AND Id NOT IN 
-                                (SELECT Room_Id FROM reservation WHERE Beg_Time >= ? AND Beg_Time <= ?
+                                (SELECT Room_Id FROM reservation WHERE res_date == ? AND Beg_Time >= ? AND Beg_Time <= ?
                                  OR End_Time >= ? AND End_Time <= ?
-                                 OR Beg_Time <= ? AND End_Time >= ?)''', (attendees, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
+                                 OR Beg_Time <= ? AND End_Time >= ?)''', (attendees, date, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
     return available_rooms
