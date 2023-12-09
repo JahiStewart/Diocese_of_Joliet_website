@@ -74,6 +74,8 @@ def book(room_id):
 
         org_id = request.form.get('org_id')
         room_arrangement_id = request.form.get('arrangement')
+        print("org_id:", org_id)
+        print("room_arrangement_id:", room_arrangement_id)
 
 
         # export all of the data from this form into the database
@@ -122,7 +124,7 @@ def get_results(attendees,date, start_time, end_time):
 
     # get all rooms that are not reserved during the specified time
     available_rooms = db.execute('''SELECT * from room WHERE capacity >= ? AND Id NOT IN 
-                                (SELECT Room_Id FROM reservation WHERE res_date == ? AND Beg_Time >= ? AND Beg_Time <= ?
+                                (SELECT Room_Id FROM reservation WHERE res_date == ? AND (Beg_Time >= ? AND Beg_Time <= ?
                                  OR End_Time >= ? AND End_Time <= ?
-                                 OR Beg_Time <= ? AND End_Time >= ?)''', (attendees, date, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
+                                 OR Beg_Time <= ? AND End_Time >= ?))''', (attendees, date, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
     return available_rooms

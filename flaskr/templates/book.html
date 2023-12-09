@@ -42,7 +42,7 @@
         <select name="organization">
             <option value="0">-- Select Organization</option>
             {% for org in organizations %}
-                <option id="org_id" value="{{ org.id }}">{{ org.name }}</option>
+                <option name = "org_id" value="{{ org.id }}">{{org.id}}{{ org.name }}</option>
             {% endfor %}
         </select>
     </div>
@@ -71,7 +71,7 @@
 
     <div class="form-group">{{ wtf.form_field(form.notes) }}</div>
 
-    <b>Please check here if this meeting should be <em>not</em> be displayed in the lobby</b>
+    <b>Please check here if this meeting should <em>not</em> be displayed in the lobby</b>
     <div class="form-group">{{ wtf.form_field(form.no_lobby) }}</div>
 
     <div class="form-inline text-right">

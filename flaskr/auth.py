@@ -113,22 +113,3 @@ def login_required(view):
         return view(**kwargs)
     return wrapped_view
 
-
-@auth.route('/myaccount')
-def myaccount():
-    # create connection to database
-    db = get_db()
-    # get current users id
-    user_id = session.get('user_id')
-    # get users organization if any
-    org = db.execute(
-        'SELECT * FROM organization WHERE id = ?',
-        (user_id,)
-    ).fetchone()
-    # catch error in case user has no organization
-    try:
-        org_name = org['name']
-    except:
-        org_name = "You currenlty don't belong to any organizations."
-
-    return render_template('auth/myaccount.html', org_name=org_name)

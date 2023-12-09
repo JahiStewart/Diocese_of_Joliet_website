@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}My Account{% endblock %}
+
+
+{% block content %}
+    <h1 class="mt-4">My Account</h1>
+    <div class="wrapper">
+        <section class="account-info-section float-left">
+            <ul class="list-group list-group-flush"> 
+                <li class="list-group-item">{{ g.user['First_Name'] }} {{ g.user['Last_Name'] }}</li>
+                <li class="list-group-item">{{ g.user['Email'] }}</li>
+                <li class="list-group-item"><b>Location</b> | Diocese of Joliet</li>
+                <li class="list-group-item"><b>Organization</b> | {{ org_name }}</li>
+                <li class="list-group-item"><a href="">View Reservation History</a></li>
+                <li class="list-group-item"><a href="{{ url_for('form.index') }}">Request Space</a></li>
+            </ul>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Join an Organization</button>
+                <div class="dropdown-menu">
+                    <form class="form" method="post">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option value="none">-- Select Organization</option>
+                                <option value="CatholicCharities">Catholic Charities</option>
+                                <option value="CouncilofCatholicWomen">Council of Catholic Women</option>
+                                <option value="DioceseofJoliet">Diocese of Joliet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="4" cols="30" placeholder="Position/Role in Organization (i.e. Secretary)"></textarea>
+                        </div>
+                        <div class="form-group">
+                        <input class="btn btn-primary" type="submit" value="Request to Join">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+        </section>
+
+        <secion class="account-reservation-section float-right">
+            <h2>Pending Reservations</h2>
+            <table class="table">
+                <tbody>
+                {% if pending_reservations_info %} <!-- If there are reservations -->
+                    {% for reservation in pending_reservations_info %}
+                        <tr>
+                            <td><img src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}" height="150" width="150"></td>
+                            <td>{{ reservation.room_name }}</td>
+                            {% if reservation.org_name %}
+                                <td>{{ reservation.org_name }}</td>
+                            {% endif %}
+                            <td>{{ reservation.user_name }}</td>
+                            <td>{{ reservation.res_date }}</td>
+                            <td>{{ reservation.beg_time }}</td>
+                            <td>{{ reservation.end_time }}</td>
+                            <td>{{ reservation.purpose }}</td> 
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="reservation_id" value="{{ reservation.id }}"> <!-- Hidden field for reservation_id -->
+                                    <input type="submit" name="cancel" value="Cancel" class="btn btn-warning"> <!-- Cancel button -->
+                                </form>
+                            </td>  
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">No Approved Reservations</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+            <h2>Approved Reservations</h2>
+            <table class="table">
+                <tbody>
+                {% if approved_reservations_info %} <!-- If there are no reservations -->
+                    {% for reservation in approved_reservations_info %}
+                        <tr>
+                            <td><img src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}" height="150" width="150"></td>
+                            <td>{{ reservation.room_name }}</td>
+                            {% if reservation.org_name %}
+                                <td>{{ reservation.org_name }}</td>
+                            {% endif %}
+                            <td>{{ reservation.user_name }}</td>
+                            <td>{{ reservation.res_date }}</td>
+                            <td>{{ reservation.beg_time }}</td>
+                            <td>{{ reservation.end_time }}</td>
+                            <td>{{ reservation.purpose }}</td> 
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="reservation_id" value="{{ reservation.id }}"> <!-- Hidden field for reservation_id -->
+                                    <input type="submit" name="cancel" value="Cancel" class="btn btn-warning"> <!-- Cancel button -->
+                                </form>
+                            </td>  
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">No Approved Reservations</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </secion>
+    </div>
+{% endblock %}

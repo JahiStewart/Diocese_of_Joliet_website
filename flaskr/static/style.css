@@ -3,6 +3,11 @@ html {
     margin-bottom: 10em;
 }
 
+tr {
+    background: ghostwhite;
+}
+
+
 .wrapper {
     display: block;
     margin: auto;
@@ -42,6 +47,10 @@ h2 {
 .table {
     width: 70%;
     margin: auto;
+}
+
+.alert{
+    text-align: center;
 }
 
 
