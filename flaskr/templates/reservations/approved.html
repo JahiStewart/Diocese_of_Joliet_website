@@ -5,29 +5,34 @@
 
 {% block content %}
 
-<h1 class="mt-4">Approved Reservations</h1>
+<h2>Approved Reservations</h2>
 
-<table class="table">
-    <tbody>
+<div class="wrapper">
+    <table class="table">
         {% if reservations_info %} <!-- If there are reservations -->
             {% for reservation in reservations_info %}
                 <tr>
-                    <td><img src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}" height="150" width="150"></td>
-                    <td>{{ reservation.room_name }}</td>
+                    <td colspan="7" style="padding:0">
+                        <div class="alert alert-success" role="alert" style="margin-bottom:0">Approved Reservation</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img class="table-img" src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}">
+                        <br><b>Room {{ reservation.room_id }} : {{ reservation.room_name }}</b>
+                    </td>
                     {% if reservation.org_name %}
                         <td>{{ reservation.org_name }}</td>
                     {% endif %}
                     <td>{{ reservation.user_name }}</td>
                     <td>{{ reservation.res_date }}</td>
-                    <td>{{ reservation.beg_time }}</td>
-                    <td>{{ reservation.end_time }}</td>
-                    <td>{{ reservation.purpose }}</td>   
+                    <td>{{ reservation.beg_time }} - {{ reservation.end_time }}</td>
                 </tr>
                 <tr>
-                    <td colspan="7" style="padding:0;border:none">
+                    <td colspan="7">
                     <form class="form" method="post" style="text-align:center">
                         <input type="hidden" name="reservation_id" value="{{ reservation.id }}"> <!-- Hidden field for reservation_id -->
-                        <input type="submit" name="cancel" value="&#8999; Cancel" class="btn btn-warning"> <!-- Cancel button -->
+                        <input type="submit" name="cancel" value="Cancel" class="btn btn-warning"> <!-- Cancel button -->
                     </form>
                     </td>
                 </tr>
@@ -39,6 +44,6 @@
                 <td colspan="7">No Approved Reservations</td>
             </tr>
         {% endif %}
-    </tbody>
-</table>
+    </table>
+</div>
 {% endblock %}

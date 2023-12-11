@@ -2,7 +2,7 @@ from . import db, auth, forms, reservations
 
 import os
 
-from flask import Flask, render_template, session
+from flask import Flask, redirect, render_template, session, request, url_for
 
 from flask_bootstrap import Bootstrap
 
@@ -41,31 +41,41 @@ def create_app(test_config=None):
     app.register_blueprint(forms.forms)
 
     
-    @app.route('/myaccount')
+    @app.route('/myaccount', methods=['GET', 'POST'])
     def myaccount():
         # create connection to database
         database = db.get_db()
-        # get current users id
-        user_id = session.get('user_id')
-        # get users organization if any
-        org = database.execute(
-            'SELECT * FROM organization WHERE id = ?',
-            (user_id,)
-        ).fetchone()
-        # catch error in case user has no organization
-        try:
-            org_name = org['name']
-        except:
-            org_name = "You currenlty don't belong to any organizations."
+        if request.method == 'POST':
+            if 'cancel' in request.form:
+                if request.form['cancel'] == 'Cancel':
+                    # cancel reservations
+                    reservation_id = request.form['reservation_id']
+                    database.execute('DELETE FROM Reservation WHERE id = ?', (reservation_id,))
+                    database.commit()
+                    print("cancel")
+            return redirect(url_for('myaccount'))
+        else:
+            # get current users id
+            user_id = session.get('user_id')
+            # get users organization if any
+            org = database.execute(
+                'SELECT * FROM organization WHERE id = ?',
+                (user_id,)
+            ).fetchone()
+            # catch error in case user has no organization
+            try:
+                org_name = org['name']
+            except:
+                org_name = "You currenlty don't belong to any organizations."
 
-        pending_reservations_info = reservations.get_reservations('N', user_id)
-        approved_reservations_info = reservations.get_reservations('Y', user_id)
+            pending_reservations_info = reservations.get_reservations('N', user_id)
+            approved_reservations_info = reservations.get_reservations('Y', user_id)
 
-        return render_template('myaccount.html', 
-                            org_name=org_name, pending_reservations_info=pending_reservations_info, 
-                               approved_reservations_info=approved_reservations_info
-                            )
-    
+            return render_template('myaccount.html', 
+                                org_name=org_name, pending_reservations_info=pending_reservations_info, 
+                                approved_reservations_info=approved_reservations_info
+                                )
+        
                             
 
     return app

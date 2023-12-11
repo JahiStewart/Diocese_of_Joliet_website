@@ -4,7 +4,7 @@
 
 
 {% block content %}
-    <h1 class="mt-4">My Account</h1>
+    <h2>My Account</h2>
     <div class="wrapper">
         <section class="account-info-section float-left">
             <ul class="list-group list-group-flush"> 
@@ -46,8 +46,12 @@
                 {% if pending_reservations_info %} <!-- If there are reservations -->
                     {% for reservation in pending_reservations_info %}
                         <tr>
-                            <td><img src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}" height="150" width="150"></td>
-                            <td>{{ reservation.room_name }}</td>
+                            <td colspan="9" style="padding:0">
+                                <div class="alert alert-info" role="alert" style="margin-bottom:0">Pending Approval</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><img class="reservations-img" src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}"><br>Room {{ reservation.room_id }}:{{ reservation.room_name }}</td>
                             {% if reservation.org_name %}
                                 <td>{{ reservation.org_name }}</td>
                             {% endif %}
@@ -63,11 +67,13 @@
                                 </form>
                             </td>  
                         </tr>
+                        <tr style="background-color: white;"><td colspan="7"></td></tr>
+
                     {% endfor %}
                 {% else %}
                     <tr>
                         <td colspan="7">No Approved Reservations</td>
-                    </tr>
+                    </tr>      
                 {% endif %}
                 </tbody>
             </table>
@@ -77,16 +83,21 @@
                 {% if approved_reservations_info %} <!-- If there are no reservations -->
                     {% for reservation in approved_reservations_info %}
                         <tr>
-                            <td><img src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}" height="150" width="150"></td>
-                            <td>{{ reservation.room_name }}</td>
+                            <td colspan="9" style="padding:0">
+                                <div class="alert alert-success" role="alert" style="margin-bottom:0">Approved Reservation</div>
+                            </td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td><img class="table-img" src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}">
+                                <br><b>Room {{ reservation.room_id }}:{{ reservation.room_name }}</b>
+                            </td>
                             {% if reservation.org_name %}
                                 <td>{{ reservation.org_name }}</td>
                             {% endif %}
                             <td>{{ reservation.user_name }}</td>
                             <td>{{ reservation.res_date }}</td>
-                            <td>{{ reservation.beg_time }}</td>
-                            <td>{{ reservation.end_time }}</td>
-                            <td>{{ reservation.purpose }}</td> 
+                            <td>{{ reservation.beg_time }} - {{ reservation.end_time }}</td>
                             <td>
                                 <form method="post">
                                     <input type="hidden" name="reservation_id" value="{{ reservation.id }}"> <!-- Hidden field for reservation_id -->
@@ -94,6 +105,8 @@
                                 </form>
                             </td>  
                         </tr>
+                        <tr style="background-color: white;"><td colspan="7"></td></tr>
+
                     {% endfor %}
                 {% else %}
                     <tr>

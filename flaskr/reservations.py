@@ -7,6 +7,7 @@ reservations = Blueprint('reservations', __name__, url_prefix='/reservations')
 
 
 @reservations.route('/pending',  methods=['GET', 'POST'])
+@login_required
 def pending():
     db = get_db()
     if request.method == 'POST':
@@ -38,6 +39,7 @@ def pending():
 
 
 @reservations.route('/approved', methods=['GET', 'POST'])
+@login_required
 def approved():
     if request.method == 'POST':
         if 'cancel' in request.form:
@@ -76,7 +78,7 @@ def get_reservations(approved, user_id=None):
         # get picture_name of each reservation
         picture_name = db.execute('SELECT picture_name FROM Room WHERE id = ?', (reservation['room_id'],)).fetchone()
 
-        # get room_name of each reservation
+        # get room name and room number of each reservation
         room_name = db.execute('SELECT name FROM Room WHERE id = ?', (reservation['room_id'],)).fetchone()
 
         # get organization name of each reservation
@@ -88,6 +90,7 @@ def get_reservations(approved, user_id=None):
         reservation_dict['user_name'] = user_name['first_name'] + ' ' + user_name['last_name']
         reservation_dict['picture_name'] = picture_name['picture_name']
         reservation_dict['id'] = reservation['id']
+        reservation_dict['room_id'] = reservation['room_id']
         reservation_dict['room_name'] = room_name['name']
         reservation_dict['res_date'] = reservation['res_date']
         reservation_dict['beg_time'] = reservation['beg_time']

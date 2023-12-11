@@ -4,8 +4,15 @@ html {
 }
 
 tr {
-    background: ghostwhite;
+    background-color: ghostwhite;
+    border: 1px solid #dee2e6;
 }
+
+.table>tbody>tr>td{
+    vertical-align: middle;
+    text-align: center;
+}
+
 
 
 .wrapper {
@@ -14,22 +21,25 @@ tr {
     width: 70%;
 }
 
+.navbar {
+    background-color: ghostwhite;
+    border-bottom: 6px double #337ab7;
+
+}
+
 h1 {
     text-align: center;
-    padding: 2%;
-    background-color: ghostwhite;
-    margin-top: 0;
 }
 
 h2 {
     text-align: center;
-    padding: 2%;
+    padding: 1%;
 }
 
 .form {
     display: block;
     margin: auto;
-    width: 50%;
+    width: 30%;
 }
 
 .float-right {
@@ -45,14 +55,19 @@ h2 {
 }
 
 .table {
-    width: 70%;
-    margin: auto;
+    width: 80%;
+    margin: auto;    
 }
 
 .alert{
     text-align: center;
 }
 
+.table-img {
+    height: 200px;
+    width: 200px;
+    border: 3px solid #6c757d;
+}
 
 /* make the arrangement photos clickable as buttons */
 #arrangements img {
@@ -102,4 +117,8 @@ h2 {
 
 .dropdown-menu {
     width: 100%;
+}
+
+.form-inline label{
+    padding: 1em;
 }

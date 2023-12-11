@@ -1,35 +1,52 @@
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
 
 {% block title %}Results{% endblock %}
 
 {% block content %}
 
-{% if error %}
-    <p class="error"><strong>Error:</strong> {{ error }}</p>
-{% endif %}
-<h1>Results</h1>
-{% if results %}
-    <table class="table table-striped table-responsive">
-        <tr>
-            <th>Room</th>
-            <th>Photo</th>
-            <th>Capacity</th>
-            <th></th>
-        </tr>
-        {% for result in results %}
+<h2>Results</h2>
+<div class="wrapper">
+    {% if results %}
+        <form class="form" method="POST" style="width: 80%;">
+            <div class="form-group">
+                <div class="form-inline">
+                    {{ wtf.form_field(form.date) }}
+                    {{ wtf.form_field(form.attendees) }}
+                </div>
+                <div class="form-inline">
+                    {{ wtf.form_field(form.start_time) }}
+                    {{ wtf.form_field(form.end_time) }}
+                    
+                </div>
+            </div>  
+        </form>
+        <table class="table table-responsive">
             <tr>
-                {% if result.name != "None" %}
-                <td>Room {{ result.id }}: {{ result.name }}</td>
-                {% else %}
-                <td>Room {{ result.id }}</td>
-                {% endif %}
-                <td><img src="/static/assets/room-thumbnails/{{result.picture_name}}" alt="picture of {{ result.name }}" height="100" width="100"></td>
-                <td>{{ result.capacity }}</td>
-                <td><a href="{{ url_for('form.book', room_id=result.id) }}">Book</a></td>
+                <td colspan="3" style="padding:0">
+                    <div class="alert alert-success" role="alert" style="margin-bottom:0"><b>The following roooms are available on:</b><br>
+                        {{ session['date'] }} {{ session['start_time'] }}- {{ session['end_time'] }}</div>
+                </td>
             </tr>
-        {% endfor %}
-    </table>    
-{% else %}
-    <div class="alert alert-warning" role="alert">No Result Found</div>
-{% endif %}
+            {% for result in results %}
+            <tr><td colspan="3" style="background-color: white; border: 0;"></td></tr>
+            <tr>
+                <td>
+                    <img class="table-img" src="/static/assets/room-thumbnails/{{result.picture_name}}" alt="picture of {{ result.name }}">
+                    <br><b>Room {{ result.id }}: {{ result.name }}</b>
+                </td>
+                <td>{{ result.capacity }}</td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <a class="btn btn-md btn-primary" href="{{ url_for('form.book', room_id=result.id) }}" style="text-align:center;">Book</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>    
+    {% else %}
+        <div class="alert alert-warning" role="alert">No Result Found</div>
+    {% endif %}
+</div>
 {% endblock %}

@@ -5,46 +5,49 @@
 
 {% block content %}
 
-<h1 class="mt-4">Pending Reservations</h1>
+<h2 class="mt-4">Pending Reservations</h2>
 
-
-<table class="table">
-    <tbody>
-        {% if reservations_info %} <!-- If there are reservations -->
-            {% for reservation in reservations_info %}
-                <tr class="pending_alert">
-                    <td colspan="7" style="padding:0">
-                        <div class="alert alert-info" role="alert" style="margin-bottom:0">Pending Approval</div>
-                    </td>
-                </tr>
+<div class="wrapper">
+    <table class="table" method="POST">
+        <tbody>
+            {% if reservations_info %} <!-- If there are reservations -->
+                {% for reservation in reservations_info %}
+                    <tr>
+                        <td colspan="7" style="padding:0">
+                            <div class="alert alert-info" role="alert" style="margin-bottom:0">Pending Approval</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img class="table-img" src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}">
+                            <br><b>Room {{ reservation.room_id }} : {{ reservation.room_name }}</b>
+                        </td>
+                
+                        {% if reservation.org_name %}
+                            <td>{{ reservation.org_name }}</td>
+                        {% endif %}
+                        <td>{{ reservation.user_name }}</td>
+                        <td>{{ reservation.res_date }}</td>
+                        <td>{{ reservation.beg_time }} - {{ reservation.end_time }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                        <form class="form" method="post" style="text-align:center">
+                            <input type="hidden" name="reservation_id" value="{{ reservation.id }}"> <!-- Hidden field for reservation_id -->
+                            <input type="submit" name="cancel" value="Cancel" class="btn btn-warning"> <!-- Cancel button -->
+                            <input type="submit" name="deny" value="Deny" class="btn btn-danger"> <!-- Deny button -->
+                            <input type="submit" name="approve" value="Approve" class="btn btn-success"><!-- Approve button -->
+                        </form>
+                        </td>
+                    </tr>
+                    <tr style="background-color: white;"><td colspan="7"></td></tr>
+                {% endfor %}
+            {% else %} <!-- If there are no reservations -->
                 <tr>
-                    <td><img src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}" height="150" width="150"></td>
-                    <td>{{ reservation.room_name }}</td>
-                    {% if reservation.org_name %}
-                        <td>{{ reservation.org_name }}</td>
-                    {% endif %}
-                    <td>{{ reservation.user_name }}</td>
-                    <td>{{ reservation.res_date }}</td>
-                    <td>{{ reservation.beg_time }}</td>
-                    <td>{{ reservation.end_time }}</td>
-                    <td>{{ reservation.purpose }}</td> 
+                    <td colspan="7">No reservations to approve</td>
                 </tr>
-                <tr>
-                    <td colspan="7" style="padding:0;border:none">
-                    <form class="form" method="post" style="text-align:center">
-                        <input type="hidden" name="reservation_id" value="{{ reservation.id }}"> <!-- Hidden field for reservation_id -->
-                        <input type="submit" name="cancel" value="&#8999; Cancel" class="btn btn-warning"> <!-- Cancel button -->
-                        <input type="submit" name="deny" value="&Cross; Deny" class="btn btn-danger"> <!-- Deny button -->
-                        <input type="submit" name="approve" value="&check; Approve" class="btn btn-success"><!-- Approve button -->
-                    </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        {% else %} <!-- If there are no reservations -->
-            <tr>
-                <td colspan="7">No reservations to approve</td>
-            </tr>
-        {% endif %}
-    </tbody>
-</table>
-{% endblock %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+    {% endblock %}
