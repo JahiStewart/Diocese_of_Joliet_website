@@ -51,7 +51,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><img class="reservations-img" src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}"><br>Room {{ reservation.room_id }}:{{ reservation.room_name }}</td>
+                            <td><img class="table-img" src="/static/assets/room-thumbnails/{{ reservation.picture_name }}"  alt="picture of {{ reservation.room_name }}">
+                                <br><b>Room {{ reservation.room_id }}:{{ reservation.room_name }}</b>
+                            </td> 
                             {% if reservation.org_name %}
                                 <td>{{ reservation.org_name }}</td>
                             {% endif %}
