@@ -125,15 +125,15 @@ def results():
         # get date, start time, and end time from session
         date = session.get('date')
         date = datetime.strptime(date, '%Y-%m-%d').date()
-        start_time = datetime.strptime(session.get('start_time'), '%H:%M:%S').time()
-        end_time = datetime.strptime(session.get('end_time'), '%H:%M:%S').time()
+        start_time = datetime.strptime(session.get('start_time'), '%H:%M:%S')
+        end_time = datetime.strptime(session.get('end_time'), '%H:%M:%S')
         attendees = session.get('attendees')
 
         # create form with date, start time, and end time pre-populated
         form = RoomRequestForm(date=date, start_time=start_time, end_time=end_time, attendees=attendees)
 
         # get results from database
-        results = get_results(form.attendees.data, form.date.data, form.start_time.data, form.end_time.data)
+        results = get_results(form.attendees.data, form.date.data, start_time, end_time)
         # results = []
         return render_template('results.html', form=form, results=results)
 
@@ -142,13 +142,11 @@ def get_results(attendees,date, start_time, end_time):
     db = get_db()
 
     # get all rooms that are not reserved during the specified time
-    available_rooms = db.execute('''SELECT * FROM Room WHERE Id NOT IN 
-                                 (SELECT room_id FROM reservation WHERE Res_Date = ?)''',(date,)).fetchall()
+    available_rooms = db.execute('''SELECT * FROM Room WHERE capacity >= ? AND Id NOT IN 
+                                 (SELECT room_id FROM reservation WHERE Res_Date = ? AND 
+                                 (Beg_Time >= ? AND Beg_Time <= ?) OR 
+                                 (End_Time >= ? AND End_Time <= ?) OR 
+                                 (Beg_time <= ? AND End_Time >= ?))''',
+                                 (attendees, date, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
     
     return available_rooms
-
-# AND (Beg_Time >= ? AND Beg_Time <= ?
-#                                  OR End_Time >= ? AND End_Time <= ?
-#                                  OR Beg_Time <= ? AND End_Time >= ?)
-
-#                                  , start_time, end_time, start_time, end_time, start_time, end_time
