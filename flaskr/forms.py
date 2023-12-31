@@ -107,7 +107,6 @@ def index():
         session['end_time'] = form.end_time.data.strftime('%H:%M:%S')
         session['attendees'] = form.attendees.data
         return redirect(url_for('form.results'))
-        # return render_template('index.html', form=form) 
     
     else:
         return render_template('index.html', form=form)
@@ -138,15 +137,26 @@ def results():
         return render_template('results.html', form=form, results=results)
 
 
-def get_results(attendees,date, start_time, end_time):
+def get_results(attendees, date, start_time, end_time):
     db = get_db()
 
     # get all rooms that are not reserved during the specified time
     available_rooms = db.execute('''SELECT * FROM Room WHERE capacity >= ? AND Id NOT IN 
-                                 (SELECT room_id FROM reservation WHERE Res_Date = ? AND 
-                                 (Beg_Time >= ? AND Beg_Time <= ?) OR 
-                                 (End_Time >= ? AND End_Time <= ?) OR 
-                                 (Beg_time <= ? AND End_Time >= ?))''',
-                                 (attendees, date, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
+                                (SELECT room_id FROM reservation WHERE 
+                                   (Res_Date = ? AND 
+                                   (Beg_Time <= ? and Beg_Time <= ?) or
+                                   (End_Time >= ? and End_Time <= ?) or
+                                   (Beg_Time <= ? and End_Time >= ?)))''',(attendees, date, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
+    
+    unavailable_rooms = db.execute('''SELECT room_id FROM reservation WHERE 
+                                   (Res_Date = ? AND 
+                                   (Beg_Time <= ? and Beg_Time <= ?) or
+                                   (End_Time >= ? and End_Time <= ?) or
+                                   (Beg_Time <= ? and End_Time >= ?))''',(date, start_time, end_time, start_time, end_time, start_time, end_time)).fetchall()
+    for id in unavailable_rooms:
+        print("room", id['room_id'])
     
     return available_rooms
+
+
+
