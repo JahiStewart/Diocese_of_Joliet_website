@@ -13,6 +13,8 @@ further customization-->
 {% block head %}
 {{super()}}
 {{fixes.ie8()}}
+ <!-- link to the favicon -->
+ <link rel="shortcut icon" href="{{ url_for('static', filename='assets/icons/favicon.ico') }}" type="image/x-icon">
 {% endblock %}
 
 <!--Add our custom CSS files here-->
