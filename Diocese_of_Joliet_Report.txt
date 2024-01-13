@@ -1,0 +1,57 @@
+Diocese of Joliet Report
+
+
+Team Name: What is your team’s name? (1 point)
+
+Team Members: List your team members (1 point)
+
+Project Title: Specify your project title (1 point)
+
+
+Project Pitch: Short description of your project (3 points)
+
+
+Major Achievements: What were the major things you achieved? (3 points)
+
+
+Prior Work: Identify competing projects that seek to accomplish similar things. Include links or citations 
+            that refer to them (2 points)
+
+
+Specification: Describe overarching details such as application type (mobile, web, desktop, etc.) language, 
+                framework, operating system, code management, and testing practices. (5 points) 
+
+
+Deployment: Clear instructions are provided on how to install the app. (5 points)
+
+
+Instructions: Clear instructions are provided on how to use the app (5 points)
+
+
+Feature Implementation: Choose four of the app's most important features and explain how they were implemented
+                         with code excerpts and screenshots. (20 points)
+
+
+Future Work: 
+    What did not get done that you had planned to accomplish, and what could be done in the future to 
+    improve the project (5 points)
+
+    How have you applied lessons from previous coursework to create the deliverables for your current 
+    project? Explain (3 points)
+
+    How have your experiences in this course affected your attitudes toward your studies and your career
+     path? Explain (3 points)
+
+    How do you anticipate applying the lessons you've learned in this course in your future career?
+     Explain (3 points)
+
+
+
+Altogether, the report is worth 60 points. The actual tool you created is worth another 50 points and will be graded 
+based on functionality (i.e. do the required features work), user interface (i.e. is it easy to use), reliability and 
+robustness (is it buggy or does it work well), and code quality. Each of those are worth 10 points, so the app is worth 
+40 points in total. The app plus report are worth a total of 100 points, and that is how your grade will be determined.
+
+
+I will hold this in "escrow" so that when it comes time for you to apply for CPSC 49200, we'll talk and make sure you
+ get enrolled in a section where you can use this as the basis of your grade.
